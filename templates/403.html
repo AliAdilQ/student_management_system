@@ -1,0 +1,1 @@
+{% extends 'errors/base.html' %}{% block title %}Access restricted{% endblock %}{% block code %}403{% endblock %}{% block heading %}{{ error_heading|default:'This area needs permission.' }}{% endblock %}{% block description %}{{ error_description|default:"Your role doesn't have access to this action. Contact your administrator if you need additional permissions." }}{% endblock %}

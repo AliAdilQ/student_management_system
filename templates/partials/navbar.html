@@ -1,0 +1,5 @@
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="topbar">
+  <div class="d-flex align-items-center gap-3"><button class="icon-button menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar"><i class="bi bi-list"></i></button><span class="topbar-label">Academic workspace <span class="topbar-divider">/</span> <strong>{% if config %}{{ config.title }}{% else %}Overview{% endif %}</strong></span></div>
+  <div class="topbar-actions"><span class="today-label"><i class="bi bi-calendar4 me-2"></i>{% now 'M d, Y' %}</span><span class="live-pill"><span></span> Campus online</span><a class="icon-button" href="{% url 'profile' %}" aria-label="Your account"><i class="bi bi-person-circle"></i></a><form method="post" action="{% url 'logout' %}">{% csrf_token %}<button class="icon-button" type="submit" aria-label="Log out" title="Log out"><i class="bi bi-box-arrow-right"></i></button></form></div>
+</header>

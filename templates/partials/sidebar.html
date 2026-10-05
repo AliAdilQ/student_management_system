@@ -1,0 +1,14 @@
+<aside class="sidebar" id="sidebar" aria-label="Main navigation">
+  <a class="brand" href="{% url 'dashboard' %}"><span class="brand-mark"><i class="bi bi-mortarboard-fill"></i></span><span>Campus<span class="brand-sub">STUDENT MANAGEMENT</span></span></a>
+  <div class="institution"><span class="institution-icon"><i class="bi bi-buildings"></i></span><div><strong>Riverside University</strong><small>Academic workspace</small></div><i class="bi bi-chevron-expand"></i></div>
+  <span class="nav-section-label">WORKSPACE</span>
+  <nav class="sidebar-nav">
+    <a href="{% url 'dashboard' %}" class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}"><i class="bi bi-columns-gap"></i><span>Overview</span></a>
+    {% for item in nav_items %}<a href="{{ item.url }}" class="{% if active_module == item.key %}active{% endif %}"><i class="bi bi-{{ item.icon }}"></i><span>{{ item.title }}</span>{% if item.key == 'students' %}<span class="nav-dot"></span>{% endif %}</a>{% endfor %}
+  </nav>
+  <div class="sidebar-bottom">
+    {% if request.user.is_staff %}<a class="sidebar-utility" href="{% url 'admin:index' %}"><i class="bi bi-gear"></i> Django administration <i class="bi bi-arrow-up-right ms-auto"></i></a>{% endif %}
+    <div class="sidebar-note"><span class="note-icon"><i class="bi bi-stars"></i></span><strong>A little progress. Every day.</strong><p>Great futures start with a well-connected campus.</p></div>
+    <a class="sidebar-profile" href="{% url 'profile' %}"><span class="avatar avatar-purple">{{ request.user.first_name|first|default:request.user.username|first|upper }}</span><span><strong>{{ request.user.get_full_name|default:request.user.username }}</strong><small>{% if request.user.is_superuser %}Administrator{% else %}{{ request.user.groups.first|default:'Team member' }}{% endif %}</small></span><i class="bi bi-chevron-right ms-auto"></i></a>
+  </div>
+</aside>

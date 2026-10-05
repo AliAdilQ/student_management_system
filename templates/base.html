@@ -1,0 +1,30 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#6554c0">
+  <title>{% block title %}Dashboard{% endblock %} · Student Management</title>
+  <link rel="icon" href="{% static 'images/favicon.svg' %}" type="image/svg+xml">
+  <link rel="stylesheet" href="{% static 'vendor/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'vendor/bootstrap-icons.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/app.css' %}">
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+  {% include 'partials/sidebar.html' %}
+  <div class="app-shell">
+    {% include 'partials/navbar.html' %}
+    <main id="main-content" class="page-content">
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{% url 'dashboard' %}">Workspace</a><i class="bi bi-chevron-right"></i>{% block breadcrumbs %}<span>Overview</span>{% endblock %}</nav>
+      {% include 'partials/messages.html' %}
+      {% block content %}{% endblock %}
+    </main>
+    {% include 'partials/footer.html' %}
+  </div>
+  <script src="{% static 'vendor/bootstrap.bundle.min.js' %}" defer></script>
+  <script src="{% static 'js/app.js' %}" defer></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>
